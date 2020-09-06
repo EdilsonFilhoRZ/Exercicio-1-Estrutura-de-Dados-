@@ -1,0 +1,84 @@
+//´Programa: exercicio 1.c
+//Autor: Edilson Raimundo Zacarias Filho.
+
+#include <cstdlib>
+#include <stdio.h>
+#include <stdlib.h>
+#include <queue>
+void Ler(int * n1, int *n2, int *n3);
+void OrdernaNumero(int *num1,int *num2,int *num3); //Procedimento: Organiza os numeros.
+int VerificarPar(int imparOuPar); //Função: Retorna (Par) ou (Impar).
+
+int main(void) {
+    int numero1,numero2,numero3;
+    char opcao;
+    
+    do{
+        Ler(&numero1,&numero2,&numero3);
+        OrdernaNumero(&numero1,&numero2,&numero3); //Procedimento: Organiza os numeros.
+       int  RetornoVerificarPar =  VerificarPar(numero3); //Função: Retorna (Par) ou (Impar).
+    
+    if (RetornoVerificarPar) {
+        
+        printf("Os numeros ordenados são: %d -- %d -- %d (PAR) ",numero1,numero2,numero3);
+         
+    }else{
+        
+        printf("Os numeros ordenados são: %d -- %d -- %d (IMPAR) ",numero1,numero2,numero3);
+         
+    }
+        printf("\n Quer continuar? (S/N)");
+        scanf("%s",&opcao);
+  
+    } while (opcao == 's');
+
+   
+}
+void Ler(int *n1, int *n2, int *n3){
+   
+         printf("\n Digite tres numeros inteiros:");
+         scanf("\t %d %d %d",n1, n2, n3);
+}
+void OrdernaNumero(int *num1,int *num2,int *num3){
+    int troca, 
+        x1 = *num1,
+        x2 = *num2, 
+        x3 = *num3;
+    
+    if (x1 > x2 ) {
+        troca = x2;
+        x2 = x1;
+        x1 = troca;   
+    }
+    
+    if (x2 > x3) {
+        troca = x3;
+        x3 = x2;
+        x2 = troca;
+    }
+    
+     if (x1 > x2 ) {
+        troca = x2;
+        x2 = x1;
+        x1 = troca;  
+    }
+
+        *num1 = x1;
+        *num2 = x2;
+        *num3 = x3;
+    
+}
+int VerificarPar(int imparOuPar){
+    int binario;
+    if (imparOuPar % 2 == 0) {
+        
+        binario = 1;
+        
+    }else{
+        
+        binario = 0;
+        
+    }
+    return binario;
+}
+
